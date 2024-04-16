@@ -1,3 +1,4 @@
+import { env } from 'node:process';
 import * as dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import ImportDebtorsService from './services/import-debtors.service';
@@ -12,7 +13,7 @@ async function main() {
 }
 
 mongoose
-	.connect('mongodb://bank-challenge-db:27017/bank-challenge')
+	.connect(env.MONGODB_URI)
 	.then(async () => {
 		console.error('Database connected successfully');
 
