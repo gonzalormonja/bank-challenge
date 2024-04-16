@@ -1,11 +1,11 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema } from 'mongoose';
 
 const debtorSchema = new Schema({
-    clientIdentityCode: String,
-    situation: String,
-    debtorId: String,
+	clientIdentityCode: String,
+	situation: String,
+	debtorId: String,
 });
 
-const Debtor = mongoose.model('Debtor', debtorSchema)
+const Debtor = mongoose.model('Debtor', debtorSchema);
 
-export default Debtor
+export default Debtor;
