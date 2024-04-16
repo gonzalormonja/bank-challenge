@@ -8,6 +8,6 @@ export class DebtorRepository {
 
 interface DebtorsInput {
 	clientIdentityCode: string;
-	situation: string;
+	situation: number;
 	totalDebt: number;
 }

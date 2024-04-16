@@ -1,12 +1,12 @@
 export function processLine(line: string): {
 	entityId: string;
 	clientIdentityCode: string;
-	situation: string;
+	situation: number;
 	totalDebt: number;
 } {
 	const entityId = line.substring(0, 5).trim();
 	const clientIdentityCode = line.substring(13, 13 + 11).trim();
-	const situation = line.substring(27, 27 + 2).trim();
+	const situation = Number.parseInt(line.substring(27, 27 + 2).trim());
 	const totalDebt = Number.parseFloat(
 		line
 			.substring(29, 29 + 12)
