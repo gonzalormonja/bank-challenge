@@ -10,7 +10,7 @@ describe('processLine', () => {
 		expect(result).toEqual({
 			entityId: '00007',
 			clientIdentityCode: '20005717818',
-			situation: '1',
+			situation: 1,
 			totalDebt: 60.6,
 		});
 	});
