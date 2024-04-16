@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  bank-challenge:
+    container_name: bank-challenge
+    build:
+      context: .
+      dockerfile: ./Dockerfile.local
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./:/src
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+      - '9229:9229'
+    env_file:
+      - .env
+    networks:
+      - network-1
+    depends_on:
+      - bank-challenge-db
+  bank-challenge-db:
+    container_name: bank-challenge-db
+    image: 'mongo:7.0'
+    restart: always 
+    ports:
+      - '27017:27017'
+    env_file:
+      - .env
+    networks:
+      - network-1
+
+networks:
+  network-1:
+    name: network-1
