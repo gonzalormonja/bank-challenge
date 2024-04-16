@@ -2,8 +2,8 @@ import mongoose, { Schema } from 'mongoose';
 
 const debtorSchema = new Schema({
 	clientIdentityCode: String,
-	situation: String,
-	debtorId: String,
+	situation: Number,
+	totalDebt: Number,
 });
 
 const Debtor = mongoose.model('Debtor', debtorSchema);
