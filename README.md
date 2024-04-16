@@ -15,6 +15,10 @@ To clone the repository we must use
 git clone https://github.com/gonzalormonja/bank-challenge.git
 ```
 
+### Set env variables
+
+We must copy the file .env.example with the name .env, this file has the default variables necessary for operation
+
 ### Run project
 
 To run the project it will be sufficient to execute
@@ -22,6 +26,8 @@ To run the project it will be sufficient to execute
 ```
 docker compose up
 ```
+
+This will start the database and after that the nodejs project. It will automatically run the data import from the file configured in the environment variables. 
 
 ### Test
 
