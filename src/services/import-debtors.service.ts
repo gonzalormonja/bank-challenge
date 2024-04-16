@@ -31,23 +31,23 @@ export default class ImportDebtorsService {
 			const { entityId, clientIdentityCode, situation, totalDebt } =
 				processLine(line);
 
+			const entityPrevTotalDebt = entities[entityId]
+				? entities[entityId].totalDebt
+				: 0;
 			entities[entityId] = {
 				entityId,
-				totalDebt:
-					(entities[entityId] ? entities[entityId].totalDebt : 0) + totalDebt,
+				totalDebt: entityPrevTotalDebt + totalDebt,
 			};
 
+			const debtorPrevTotalDebt = debtors[clientIdentityCode]
+				? debtors[clientIdentityCode].totalDebt
+				: 0;
+			const debtorPrevSituation = debtors[clientIdentityCode] ? situation : 0;
 			debtors[clientIdentityCode] = {
 				clientIdentityCode,
 				situation:
-					debtors[clientIdentityCode] &&
-					debtors[clientIdentityCode].situation >= situation
-						? debtors[clientIdentityCode].situation
-						: situation,
-				totalDebt:
-					(debtors[clientIdentityCode]
-						? debtors[clientIdentityCode].totalDebt
-						: 0) + totalDebt,
+					debtorPrevSituation > situation ? debtorPrevSituation : situation,
+				totalDebt: debtorPrevTotalDebt + totalDebt,
 			};
 		}
 
